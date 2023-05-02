@@ -6,7 +6,7 @@ const renderHeadlinesNews = (err, data) => {
 
   const template = document.createDocumentFragment();
 
-  const headlinesNews = data.map(item => {
+  const headlinesNews = data.articles.map(item => {
     const card = document.createElement('div');
     card.className = 'news-cards__card';
 

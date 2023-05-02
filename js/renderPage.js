@@ -25,7 +25,7 @@ const init = () => {
 init().then(data => {
   preload.remove();
   wrapperHeadlinesNews.append(data[0]);
-  wrapperSelect.append(data[1]);
+  wrapperSelect.append(...data[1]);
 });
 
 const init2 = (searchFormInputValue) => {
@@ -43,6 +43,7 @@ searchForm.addEventListener('submit', (e) => {
     searchForm.querySelector('.form__search-input').value;
   init2(searchFormInputValue).then(data => {
     preload.remove();
+    console.log(data[1]);
     wrapperSearchRequestNews.append(data[1]);
   });
 });

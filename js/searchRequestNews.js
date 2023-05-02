@@ -11,7 +11,7 @@ const renderSearchRequestNews = (err, data, searchFormInputValue) => {
    найдено ${data.totalResults} результатов`;
   searchResultTitle.textContent = totalResults;
 
-  const goods = data.map(item => {
+  const goods = data.articles.map(item => {
     const card = document.createElement('div');
     // const dateString = `${item.publishedAt}`;
     const date = new Date(item.publishedAt);

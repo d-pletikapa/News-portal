@@ -14,6 +14,7 @@ const countries = {
   'cz': 'Česká republika', // Czech Republic
   'de': 'Deutschland', // Germany
   'eg': 'مصر', // Egypt
+  'es': 'España', // Spain
   'fr': 'France', // France
   'gb': 'United Kingdom', // United Kingdom
   'gr': 'Ελλάδα', // Greece
@@ -23,6 +24,7 @@ const countries = {
   'ie': 'Éire', // Ireland
   'il': 'ישראל', // Israel
   'in': 'भारत', // India
+  'is': 'Ísland', // Iceland
   'it': 'Italia', // Italy
   'jp': '日本', // Japan
   'kr': '대한민국', // South Korea
@@ -36,6 +38,7 @@ const countries = {
   'no': 'Norge', // Norway
   'nz': 'New Zealand', // New Zealand
   'ph': 'Pilipinas', // Philippines
+  'pk': 'Pakistan', // Pakistan
   'pl': 'Polska', // Poland
   'pt': 'Portugal', // Portugal
   'ro': 'România', // Romania
@@ -53,6 +56,7 @@ const countries = {
   'us': 'United States', // United States
   've': 'Venezuela', // Venezuela
   'za': 'South Africa', // South Africa
+  'zh': '中国', // Chinese
 };
 
 
@@ -62,19 +66,33 @@ const renderSelect = (err, data) => {
     return;
   }
 
-  const select = document.querySelector('.form__select');
-  const options = data.map(item => {
-    const option = document.createElement('option');
-    console.log(item.country);
-    option.value = item.country;
-    option.textContent = countries[item.country];
-    item.country === 'ru' ? option.selected = true : null;
-    return option;
-  });
+  // const select = document.querySelector('.form__select');
+  // const options = data.sources.map(item => {
+  //   const option = document.createElement('option');
+  //   console.log(item.country);
+  //   option.value = item.country;
+  //   option.textContent = countries[item.country];
+  //   item.country === 'ru' ? option.selected = true : null;
+  //   return option;
+  // });
 
-  select.append(...options);
+  let options = [];
+  const uniqueValues = new Set();
 
-  return select;
+  options = data.sources.map(item => {
+    if (item.country && !uniqueValues.has(item.country)) {
+      const option = document.createElement('option');
+      option.value = item.country;
+      option.textContent = countries[item.country];
+      item.country === 'ru' ? option.selected = true : null;
+      uniqueValues.add(item.country);
+      return option;
+    }
+  }).filter(Boolean);
+
+  // select.append(...options);
+
+  return options;
 };
 
 export default renderSelect;
