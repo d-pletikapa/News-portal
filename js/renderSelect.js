@@ -89,9 +89,7 @@ const renderSelect = (err, data) => {
       return option;
     }
   }).filter(Boolean);
-
   // select.append(...options);
-
   return options;
 };
 

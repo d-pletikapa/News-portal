@@ -8,17 +8,21 @@ const renderSearchRequestNews = (err, data, searchFormInputValue) => {
 
   const searchResultTitle = document.querySelector('.search-results__title');
   const totalResults = `По вашему запросу “${searchFormInputValue}”
-   найдено ${data.totalResults} результатов`;
+   найдено ${data.totalResults} результатов (8):`;
   searchResultTitle.textContent = totalResults;
 
   const goods = data.articles.map(item => {
     const card = document.createElement('div');
+    card.className = 'news-cards__card';
     // const dateString = `${item.publishedAt}`;
     const date = new Date(item.publishedAt);
 
     card.innerHTML = `
       <img class="card__img" src="${item.urlToImage}" 
-      alt="${item.title}" style="width: 270px; height: 200px;">
+      alt="${item.title}" style="width: 270px; height: 200px;" onerror=
+       "if (this.src != '../img/no-photo.jpg') this.src =
+     '../img/no-photo.jpg';">
+
       <a class="card__intro-block" href="${item.url}" target="_blank">
         <h2 class="card__title">${item.title}</h2>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

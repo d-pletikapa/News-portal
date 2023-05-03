@@ -11,7 +11,6 @@ const fetchRequest = async (postfix, {
   try {
     const options = {
       method,
-      headers,
     };
 
     if (body) options.body = JSON.stringify(body);

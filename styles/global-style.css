@@ -41,6 +41,9 @@ html {
   outline: transparent;
 }
 
+ol {
+  padding-inline-start: 0;
+}
 
 body {
   min-width: 320px;
